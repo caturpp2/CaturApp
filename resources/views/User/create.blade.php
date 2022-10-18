@@ -29,7 +29,7 @@
                             {{-- <label for="role" class="form-label">Role</label> --}}
                             <input type="text" class="form-control" name="role" placeholder="Role">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
                         </form>
                 </div>
             </div>

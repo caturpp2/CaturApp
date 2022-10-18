@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -35,16 +36,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create([
+            'name' =>$request->input('name')
+        ]);
+
+        return redirect('/dashboard');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(category $category)
     {
         //
     }
@@ -52,34 +58,42 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $categories = Category::find($id);
+        return view('category.edit', compact('categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->name = $request->input('name');
+        $categories->save();
+
+        return redirect('/category');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->delete();
+
+        return redirect('/category');
     }
 }

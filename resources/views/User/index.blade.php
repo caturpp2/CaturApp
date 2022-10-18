@@ -13,7 +13,7 @@
                     {{-- Content --}}
                     <a href="/user/create" class="btn btn-primary">Add User</a>
 
-                    <table class="table">
+                    <table class="table mt-5">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -35,7 +35,7 @@
                                     <form action="/user/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                        <button class="btn btn-danger bg-danger" type="submit">Delete</button>
                                     </form>
                                 </div>
                                 </td>

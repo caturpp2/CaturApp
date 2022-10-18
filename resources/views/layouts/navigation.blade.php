@@ -16,13 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+            @if (Auth::user()->role == 'superadmin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                         {{ __('User') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
                         {{ __('Post') }}
                     </x-nav-link>
                 </div>
@@ -31,6 +32,7 @@
                         {{ __('Comment') }}
                     </x-nav-link>
                 </div>
+            @endif
             </div>
 
             <!-- Settings Dropdown -->
